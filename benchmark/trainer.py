@@ -46,18 +46,18 @@ def _dtype(name: str):
 
 
 def setup_distributed():
-    """Initialize process group when launched via torchrun."""
+    """Initialize process group when launched via torchrun. Idempotent."""
     if "RANK" in os.environ:
-        dist.init_process_group(backend="nccl")
-        rank = dist.get_rank()
-        torch.cuda.set_device(rank)
-        return rank, dist.get_world_size()
+        if not dist.is_initialized():
+            dist.init_process_group(backend="nccl")
+            torch.cuda.set_device(int(os.environ["LOCAL_RANK"]))
+        return dist.get_rank(), dist.get_world_size()
     return 0, 1
 
 
 def cleanup_distributed():
-    if dist.is_initialized():
-        dist.destroy_process_group()
+    # Process group is shared across all sweep runs; let torchrun tear it down on exit.
+    pass
 
 
 def build_model(cfg: BenchmarkConfig, rank: int = 0):
