@@ -4,6 +4,7 @@ Wraps a HuggingFace causal LM and runs a fixed number of steps for benchmarking.
 """
 import os
 import time
+import functools
 import torch
 import torch.distributed as dist
 from torch.optim import AdamW
@@ -97,8 +98,9 @@ def build_model(cfg: BenchmarkConfig, rank: int = 0):
             sharding_strategy=_sharding_strategy(cfg.fsdp.sharding_strategy),
             mixed_precision=mp_policy,
             cpu_offload=CPUOffload(offload_params=cfg.fsdp.cpu_offload),
-            auto_wrap_policy=transformer_auto_wrap_policy(
-                transformer_layer_cls={layer_cls}
+            auto_wrap_policy=functools.partial(
+                transformer_auto_wrap_policy,
+                transformer_layer_cls={layer_cls},
             ) if layer_cls else None,
             device_id=torch.cuda.current_device(),
         )
