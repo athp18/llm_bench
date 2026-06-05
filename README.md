@@ -16,10 +16,9 @@ llm_bench/
 │   ├── metrics.py       # StepMetrics, BenchmarkResult, MetricsCollector
 │   ├── trainer.py       # Training loop (single-GPU + FSDP)
 │   └── sweep.py         # Sweep runner + preset sweeps
-├── scripts/
-│   └── generate_mock_results.py   # Mock data for dashboard dev
 ├── results/             # JSON outputs per run + sweep_summary.json
-├── dashboard.html       # Standalone results dashboard
+├── dashboard.html       # Self-contained results dashboard
+├── inject_results.sh    # Embeds results/ data into dashboard.html
 ├── run_benchmark.py     # CLI entry point
 └── requirements.txt
 ```
@@ -44,19 +43,23 @@ python run_benchmark.py --sweep full_ablation
 torchrun --nproc_per_node=4 run_benchmark.py --sweep full_ablation
 ```
 
-## Generate mock data (no GPU needed)
-
-```bash
-cd llm_bench
-python scripts/generate_mock_results.py
-# then open dashboard.html in a browser
-```
-
 ## Dashboard
 
-Open `dashboard.html` directly in a browser. It loads results from the embedded mock
-data by default. To use your real results, replace the `RAW` array in the script with
-the contents of `results/sweep_summary.json`.
+After running a benchmark, inject the results and open the file:
+
+```bash
+./inject_results.sh
+open dashboard.html   # or just double-click it
+```
+
+`inject_results.sh` reads every JSON file in `results/` and embeds the data directly into `dashboard.html`, which is then a self-contained static file with no server needed.
+
+Features:
+- **Throughput & memory** bar chart with filter chips (BF16, FP32, FSDP, Single GPU, GC on/off)
+- **Efficiency frontier** scatter plot — throughput vs peak memory per configuration
+- **Grad checkpoint impact** — side-by-side throughput and memory comparison for matched pairs
+- **Training dynamics** — per-step curves for throughput, loss, and GPU memory (all runs, individually toggleable)
+- **All runs table** — sorted by throughput, with inline bar charts
 
 ## Programmatic API
 
@@ -93,4 +96,4 @@ results = run_sweep(make_sweep_configs(base, overrides))
 - FSDP requires `torchrun` to initialize the process group. Single-GPU mode works with
   plain `python run_benchmark.py`.
 - `pynvml` is optional; GPU utilization % is skipped if not installed.
-- Results are saved as JSON to `./results/` and can be fed directly into the dashboard.
+- Results are saved as JSON to `./results/`. Run `./inject_results.sh` to update the dashboard.
