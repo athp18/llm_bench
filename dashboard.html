@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LLM Benchmark Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f8f8f6; color: #1a1a18; font-size: 14px; padding: 2rem; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 0.25rem; }
+  .subtitle { font-size: 13px; color: #6b6b67; margin-bottom: 1.5rem; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: #9b9b96; margin: 0 0 10px; }
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+  .metric-card { background: #efefec; border-radius: 8px; padding: 12px 14px; }
+  .metric-card .lbl { font-size: 12px; color: #6b6b67; margin-bottom: 4px; }
+  .metric-card .val { font-size: 22px; font-weight: 500; }
+  .metric-card .sub { font-size: 11px; color: #9b9b96; margin-top: 2px; }
+  .chart-section { background: #fff; border: 0.5px solid rgba(0,0,0,.1); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+  .chip { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 0.5px solid rgba(0,0,0,.2); background: #fff; color: #6b6b67; cursor: pointer; }
+  .chip.active { background: #efefec; color: #1a1a18; border-color: rgba(0,0,0,.35); font-weight: 500; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 8px; font-size: 12px; color: #6b6b67; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 4px; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { text-align: left; font-weight: 500; color: #6b6b67; border-bottom: 0.5px solid rgba(0,0,0,.1); padding: 6px 8px; }
+  td { padding: 6px 8px; border-bottom: 0.5px solid rgba(0,0,0,.07); }
+  tr:last-child td { border-bottom: none; }
+  .bar-bg { background: #efefec; border-radius: 3px; height: 8px; width: 80px; display: inline-block; vertical-align: middle; }
+  .bar-fill { height: 8px; border-radius: 3px; }
+  .tag-yes { color: #0F6E56; font-weight: 500; }
+  .tag-no { color: #9b9b96; }
+  mono { font-family: "SF Mono", ui-monospace, monospace; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<h1>Distributed LLM Fine-Tuning — Benchmark Results</h1>
+<p class="subtitle">TinyLlama-1.1B · PyTorch FSDP · BF16 mixed precision · Batch 4 × Seq 512</p>
+
+<div class="metric-grid">
+  <div class="metric-card"><div class="lbl">Best throughput</div><div class="val" id="bestTps">—</div><div class="sub" id="bestTpsRun">—</div></div>
+  <div class="metric-card"><div class="lbl">Min GPU memory</div><div class="val" id="minMem">—</div><div class="sub" id="minMemRun">—</div></div>
+  <div class="metric-card"><div class="lbl">Fastest step</div><div class="val" id="fastStep">—</div><div class="sub" id="fastStepRun">—</div></div>
+  <div class="metric-card"><div class="lbl">FSDP speedup</div><div class="val" id="speedup">—</div><div class="sub">vs single GPU bf16</div></div>
+</div>
+
+<div class="chart-section">
+  <p class="section-label">Throughput vs memory by configuration</p>
+  <div class="filter-row" id="filters">
+    <span style="font-size:12px;color:#9b9b96">Filter:</span>
+  </div>
+  <div class="legend-row">
+    <span><span class="legend-dot" style="background:#185FA5"></span>Throughput (tok/s)</span>
+    <span><span class="legend-dot" style="background:#D85A30"></span>GPU memory (GB)</span>
+  </div>
+  <div style="position:relative;width:100%;height:280px;">
+    <canvas id="mainChart" role="img" aria-label="Grouped bar chart comparing throughput and memory across configurations">Throughput and memory usage across benchmark configurations</canvas>
+  </div>
+</div>
+
+<div class="chart-section">
+  <p class="section-label">Grad checkpointing — memory saved vs throughput cost</p>
+  <div style="position:relative;width:100%;height:220px;">
+    <canvas id="gcChart" role="img" aria-label="Paired bars showing grad checkpoint impact per sharding strategy">Grad checkpoint impact on throughput and memory per sharding strategy</canvas>
+  </div>
+</div>
+
+<div class="chart-section">
+  <p class="section-label">All runs</p>
+  <table id="runsTable"></table>
+</div>
+
+<script>
+const RAW = [
+  {id:"single_gpu_fp32", gpus:1, fsdp:false, sharding:"none", gc:false, dtype:"fp32", tps:2686, mem:14.3, ms:3301},
+  {id:"single_gpu_bf16", gpus:1, fsdp:false, sharding:"none", gc:false, dtype:"bf16", tps:5195, mem:8.1,  ms:1706},
+  {id:"fsdp_full_shard",  gpus:4, fsdp:true,  sharding:"FULL_SHARD",    gc:false, dtype:"bf16", tps:17473, mem:7.3,  ms:508},
+  {id:"fsdp_shard_grad",  gpus:4, fsdp:true,  sharding:"SHARD_GRAD_OP", gc:false, dtype:"bf16", tps:14320, mem:10.9, ms:621},
+  {id:"bf16_no_gc_full",  gpus:4, fsdp:true,  sharding:"FULL_SHARD",    gc:false, dtype:"bf16", tps:17478, mem:7.2,  ms:509},
+  {id:"bf16_gc_full",     gpus:4, fsdp:true,  sharding:"FULL_SHARD",    gc:true,  dtype:"bf16", tps:11886, mem:4.9,  ms:748},
+  {id:"bf16_no_gc_shard", gpus:4, fsdp:true,  sharding:"SHARD_GRAD_OP", gc:false, dtype:"bf16", tps:14308, mem:10.7, ms:620},
+  {id:"bf16_gc_shard",    gpus:4, fsdp:true,  sharding:"SHARD_GRAD_OP", gc:true,  dtype:"bf16", tps:9688,  mem:6.2,  ms:918},
+  {id:"fp32_no_gc_full",  gpus:4, fsdp:true,  sharding:"FULL_SHARD",    gc:false, dtype:"fp32", tps:8254,  mem:14.7, ms:1073},
+  {id:"fp32_gc_full",     gpus:4, fsdp:true,  sharding:"FULL_SHARD",    gc:true,  dtype:"fp32", tps:5651,  mem:9.1,  ms:1569},
+];
+
+let activeFilter = "all";
+const filterDefs = [
+  {key:"all", label:"All runs"},
+  {key:"bf16", label:"BF16 only"},
+  {key:"fp32", label:"FP32 only"},
+  {key:"fsdp", label:"FSDP only"},
+  {key:"single", label:"Single GPU"},
+];
+
+function getFiltered() {
+  if (activeFilter === "bf16") return RAW.filter(r => r.dtype === "bf16");
+  if (activeFilter === "fp32") return RAW.filter(r => r.dtype === "fp32");
+  if (activeFilter === "fsdp") return RAW.filter(r => r.fsdp);
+  if (activeFilter === "single") return RAW.filter(r => !r.fsdp);
+  return RAW;
+}
+
+// Summary cards
+function updateCards() {
+  const data = getFiltered();
+  const best = data.reduce((a,b) => a.tps > b.tps ? a : b);
+  const minM = data.reduce((a,b) => a.mem < b.mem ? a : b);
+  const fast = data.reduce((a,b) => a.ms < b.ms ? a : b);
+  const single = RAW.find(r => r.id === "single_gpu_bf16");
+  const bestFsdp = RAW.filter(r => r.fsdp).reduce((a,b) => a.tps > b.tps ? a : b);
+  document.getElementById("bestTps").textContent = (best.tps/1000).toFixed(1)+"k tok/s";
+  document.getElementById("bestTpsRun").textContent = best.id.replace(/_/g," ");
+  document.getElementById("minMem").textContent = minM.mem.toFixed(1)+" GB";
+  document.getElementById("minMemRun").textContent = minM.id.replace(/_/g," ");
+  document.getElementById("fastStep").textContent = fast.ms+"ms";
+  document.getElementById("fastStepRun").textContent = fast.id.replace(/_/g," ");
+  document.getElementById("speedup").textContent = (bestFsdp.tps/single.tps).toFixed(1)+"×";
+}
+
+// Filter chips
+const fRow = document.getElementById("filters");
+filterDefs.forEach(f => {
+  const chip = document.createElement("span");
+  chip.className = "chip" + (f.key === "all" ? " active" : "");
+  chip.textContent = f.label;
+  chip.onclick = () => {
+    activeFilter = f.key;
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+    chip.classList.add("active");
+    updateCards();
+    rebuildMain();
+  };
+  fRow.appendChild(chip);
+});
+
+// Main chart
+let mainChart = null;
+function rebuildMain() {
+  const data = getFiltered();
+  const labels = data.map(r => r.id.replace(/_/g," "));
+  if (mainChart) mainChart.destroy();
+  mainChart = new Chart(document.getElementById("mainChart"), {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {label:"Throughput (tok/s)", data:data.map(r=>r.tps), backgroundColor:"#185FA5", borderRadius:3, yAxisID:"y"},
+        {label:"GPU memory (GB)",    data:data.map(r=>r.mem), backgroundColor:"#D85A30", borderRadius:3, yAxisID:"y2"},
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{mode:"index",intersect:false}},
+      scales:{
+        x:{ticks:{font:{size:10},maxRotation:35,autoSkip:false,color:"#888"},grid:{display:false}},
+        y:{position:"left", title:{display:true,text:"tok/s",font:{size:11},color:"#185FA5"}, ticks:{color:"#185FA5",font:{size:11}}, grid:{color:"rgba(0,0,0,.05)"}},
+        y2:{position:"right", title:{display:true,text:"GB",font:{size:11},color:"#D85A30"}, ticks:{color:"#D85A30",font:{size:11}}, grid:{display:false}},
+      }
+    }
+  });
+}
+
+// GC chart
+const gcPairs = [
+  {label:"FULL_SHARD bf16",    noGC:RAW.find(r=>r.id==="bf16_no_gc_full"),  withGC:RAW.find(r=>r.id==="bf16_gc_full")},
+  {label:"SHARD_GRAD_OP bf16", noGC:RAW.find(r=>r.id==="bf16_no_gc_shard"), withGC:RAW.find(r=>r.id==="bf16_gc_shard")},
+  {label:"FULL_SHARD fp32",    noGC:RAW.find(r=>r.id==="fp32_no_gc_full"),  withGC:RAW.find(r=>r.id==="fp32_gc_full")},
+];
+new Chart(document.getElementById("gcChart"), {
+  type:"bar",
+  data:{
+    labels:gcPairs.map(p=>p.label),
+    datasets:[
+      {label:"No GC — tps",   data:gcPairs.map(p=>p.noGC.tps),   backgroundColor:"#185FA5", borderRadius:3, yAxisID:"y"},
+      {label:"With GC — tps", data:gcPairs.map(p=>p.withGC.tps), backgroundColor:"#85B7EB", borderRadius:3, yAxisID:"y"},
+      {label:"No GC — mem",   data:gcPairs.map(p=>p.noGC.mem),   backgroundColor:"#D85A30", borderRadius:3, yAxisID:"y2"},
+      {label:"With GC — mem", data:gcPairs.map(p=>p.withGC.mem), backgroundColor:"#F0997B", borderRadius:3, yAxisID:"y2"},
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:true,position:"top",labels:{font:{size:11},boxWidth:10,padding:12}}, tooltip:{mode:"index",intersect:false}},
+    scales:{
+      x:{ticks:{font:{size:11},color:"#888"},grid:{display:false}},
+      y:{position:"left", title:{display:true,text:"tok/s",font:{size:11},color:"#185FA5"}, ticks:{color:"#185FA5",font:{size:11}}, grid:{color:"rgba(0,0,0,.05)"}},
+      y2:{position:"right", title:{display:true,text:"GB",font:{size:11},color:"#D85A30"}, ticks:{color:"#D85A30",font:{size:11}}, grid:{display:false}},
+    }
+  }
+});
+
+// Table
+function renderTable() {
+  const maxTps = Math.max(...RAW.map(r=>r.tps));
+  const maxMem = Math.max(...RAW.map(r=>r.mem));
+  document.getElementById("runsTable").innerHTML =
+    `<tr><th>Run</th><th>GPUs</th><th>FSDP</th><th>Dtype</th><th>Grad ckpt</th><th>Throughput</th><th>Peak memory</th><th>Step time</th></tr>` +
+    RAW.map(r => {
+      const tpsPct = Math.round(r.tps/maxTps*100);
+      const memPct = Math.round(r.mem/maxMem*100);
+      return `<tr>
+        <td><mono>${r.id}</mono></td>
+        <td>${r.gpus}</td>
+        <td class="${r.fsdp ? 'tag-yes' : 'tag-no'}">${r.fsdp ? "yes" : "no"}</td>
+        <td>${r.dtype}</td>
+        <td class="${r.gc ? 'tag-yes' : 'tag-no'}">${r.gc ? "yes" : "no"}</td>
+        <td><span class="bar-bg"><span class="bar-fill" style="width:${tpsPct}%;background:#185FA5;display:block"></span></span> ${(r.tps/1000).toFixed(1)}k</td>
+        <td><span class="bar-bg"><span class="bar-fill" style="width:${memPct}%;background:#D85A30;display:block"></span></span> ${r.mem.toFixed(1)} GB</td>
+        <td>${r.ms} ms</td>
+      </tr>`;
+    }).join("");
+}
+
+updateCards();
+rebuildMain();
+renderTable();
+</script>
+</body>
+</html>
