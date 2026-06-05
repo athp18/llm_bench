@@ -10,458 +10,458 @@
   "steps": [
     {
       "step": 0,
-      "loss": 3.4552,
-      "step_time_s": 6.9295,
-      "tokens_per_second": 1182.2,
-      "gpu_memory_allocated_gb": 6.405,
-      "gpu_memory_reserved_gb": 7.366,
-      "gpu_utilization_pct": 92.1
+      "loss": 12.277292251586914,
+      "step_time_s": 4.742279252037406,
+      "tokens_per_second": 6909.757578261976,
+      "gpu_memory_allocated_gb": 11.45916928,
+      "gpu_memory_reserved_gb": 16.145973248,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 1,
-      "loss": 3.4578,
-      "step_time_s": 3.4265,
-      "tokens_per_second": 2390.8,
-      "gpu_memory_allocated_gb": 6.322,
-      "gpu_memory_reserved_gb": 7.27,
-      "gpu_utilization_pct": 88.1
+      "loss": 11.719103813171387,
+      "step_time_s": 4.462762426002882,
+      "tokens_per_second": 7342.537395464492,
+      "gpu_memory_allocated_gb": 11.45916928,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 2,
-      "loss": 3.3535,
-      "step_time_s": 2.3072,
-      "tokens_per_second": 3550.7,
-      "gpu_memory_allocated_gb": 6.59,
-      "gpu_memory_reserved_gb": 7.579,
-      "gpu_utilization_pct": 97.4
+      "loss": 11.09769058227539,
+      "step_time_s": 4.463121871987823,
+      "tokens_per_second": 7341.946050289123,
+      "gpu_memory_allocated_gb": 11.45916928,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 3,
-      "loss": 3.2661,
-      "step_time_s": 1.6971,
-      "tokens_per_second": 4827.2,
-      "gpu_memory_allocated_gb": 6.528,
-      "gpu_memory_reserved_gb": 7.507,
-      "gpu_utilization_pct": 97.6
+      "loss": 10.934349060058594,
+      "step_time_s": 4.4632000720012,
+      "tokens_per_second": 7341.817411583692,
+      "gpu_memory_allocated_gb": 11.45916928,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 4,
-      "loss": 3.2717,
-      "step_time_s": 1.4035,
-      "tokens_per_second": 5836.7,
-      "gpu_memory_allocated_gb": 6.627,
-      "gpu_memory_reserved_gb": 7.621,
-      "gpu_utilization_pct": 88.9
+      "loss": 10.848670959472656,
+      "step_time_s": 4.631244707037695,
+      "tokens_per_second": 7075.419692292518,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 5,
-      "loss": 3.1892,
-      "step_time_s": 1.3823,
-      "tokens_per_second": 5926.2,
-      "gpu_memory_allocated_gb": 6.652,
-      "gpu_memory_reserved_gb": 7.65,
-      "gpu_utilization_pct": 97.4
+      "loss": 10.799638748168945,
+      "step_time_s": 4.464956383977551,
+      "tokens_per_second": 7338.929472544821,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 6,
-      "loss": 3.1424,
-      "step_time_s": 1.3549,
-      "tokens_per_second": 6046.3,
-      "gpu_memory_allocated_gb": 6.611,
-      "gpu_memory_reserved_gb": 7.602,
-      "gpu_utilization_pct": 89.8
+      "loss": 10.768294334411621,
+      "step_time_s": 4.464133637025952,
+      "tokens_per_second": 7340.282048955494,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 7,
-      "loss": 3.0325,
-      "step_time_s": 1.3544,
-      "tokens_per_second": 6048.6,
-      "gpu_memory_allocated_gb": 6.886,
-      "gpu_memory_reserved_gb": 7.919,
-      "gpu_utilization_pct": 93.0
+      "loss": 10.752853393554688,
+      "step_time_s": 4.465783917985391,
+      "tokens_per_second": 7337.569529065422,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 8,
-      "loss": 3.0251,
-      "step_time_s": 1.353,
-      "tokens_per_second": 6054.6,
-      "gpu_memory_allocated_gb": 6.933,
-      "gpu_memory_reserved_gb": 7.973,
-      "gpu_utilization_pct": 96.8
+      "loss": 10.66468334197998,
+      "step_time_s": 4.46628170600161,
+      "tokens_per_second": 7336.751722572197,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 9,
-      "loss": 2.8842,
-      "step_time_s": 1.4306,
-      "tokens_per_second": 5726.3,
-      "gpu_memory_allocated_gb": 6.88,
-      "gpu_memory_reserved_gb": 7.912,
-      "gpu_utilization_pct": 97.8
+      "loss": 10.656834602355957,
+      "step_time_s": 4.46475952595938,
+      "tokens_per_second": 7339.253057074528,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 10,
-      "loss": 2.8699,
-      "step_time_s": 1.4067,
-      "tokens_per_second": 5823.7,
-      "gpu_memory_allocated_gb": 7.051,
-      "gpu_memory_reserved_gb": 8.109,
-      "gpu_utilization_pct": 92.9
+      "loss": 10.617547035217285,
+      "step_time_s": 4.464090942987241,
+      "tokens_per_second": 7340.352250546356,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 11,
-      "loss": 2.8056,
-      "step_time_s": 1.3529,
-      "tokens_per_second": 6055.3,
-      "gpu_memory_allocated_gb": 7.068,
-      "gpu_memory_reserved_gb": 8.129,
-      "gpu_utilization_pct": 89.9
+      "loss": 10.612470626831055,
+      "step_time_s": 4.464788805053104,
+      "tokens_per_second": 7339.20492788242,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 12,
-      "loss": 2.7491,
-      "step_time_s": 1.4215,
-      "tokens_per_second": 5762.9,
-      "gpu_memory_allocated_gb": 6.93,
-      "gpu_memory_reserved_gb": 7.97,
-      "gpu_utilization_pct": 90.6
+      "loss": 10.619498252868652,
+      "step_time_s": 4.464893825992476,
+      "tokens_per_second": 7339.032298873576,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 13,
-      "loss": 2.7278,
-      "step_time_s": 1.4151,
-      "tokens_per_second": 5788.9,
-      "gpu_memory_allocated_gb": 7.147,
-      "gpu_memory_reserved_gb": 8.219,
-      "gpu_utilization_pct": 93.7
+      "loss": 10.612236022949219,
+      "step_time_s": 4.4641519409487955,
+      "tokens_per_second": 7340.251952319437,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 14,
-      "loss": 2.6809,
-      "step_time_s": 1.3674,
-      "tokens_per_second": 5991.1,
-      "gpu_memory_allocated_gb": 7.042,
-      "gpu_memory_reserved_gb": 8.098,
-      "gpu_utilization_pct": 97.0
+      "loss": 10.587361335754395,
+      "step_time_s": 4.463312574021984,
+      "tokens_per_second": 7341.632354122147,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 15,
-      "loss": 2.5515,
-      "step_time_s": 1.3618,
-      "tokens_per_second": 6015.8,
-      "gpu_memory_allocated_gb": 7.193,
-      "gpu_memory_reserved_gb": 8.272,
-      "gpu_utilization_pct": 94.7
+      "loss": 10.54725170135498,
+      "step_time_s": 4.461831034976058,
+      "tokens_per_second": 7344.070123483695,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 16,
-      "loss": 2.5239,
-      "step_time_s": 1.4152,
-      "tokens_per_second": 5788.4,
-      "gpu_memory_allocated_gb": 7.139,
-      "gpu_memory_reserved_gb": 8.21,
-      "gpu_utilization_pct": 90.5
+      "loss": 10.583778381347656,
+      "step_time_s": 4.4648992430302314,
+      "tokens_per_second": 7339.023394794696,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 17,
-      "loss": 2.5166,
-      "step_time_s": 1.4087,
-      "tokens_per_second": 5815.3,
-      "gpu_memory_allocated_gb": 7.221,
-      "gpu_memory_reserved_gb": 8.304,
-      "gpu_utilization_pct": 97.5
+      "loss": 10.546414375305176,
+      "step_time_s": 4.463609316968359,
+      "tokens_per_second": 7341.144278786413,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 18,
-      "loss": 2.393,
-      "step_time_s": 1.4052,
-      "tokens_per_second": 5829.9,
-      "gpu_memory_allocated_gb": 7.418,
-      "gpu_memory_reserved_gb": 8.531,
-      "gpu_utilization_pct": 94.5
+      "loss": 10.548678398132324,
+      "step_time_s": 4.605778443976305,
+      "tokens_per_second": 7114.54109193112,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 19,
-      "loss": 2.3553,
-      "step_time_s": 1.3726,
-      "tokens_per_second": 5968.2,
-      "gpu_memory_allocated_gb": 7.278,
-      "gpu_memory_reserved_gb": 8.369,
-      "gpu_utilization_pct": 91.1
+      "loss": 10.538777351379395,
+      "step_time_s": 4.462483373994473,
+      "tokens_per_second": 7342.996545591294,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 20,
-      "loss": 2.3856,
-      "step_time_s": 1.3964,
-      "tokens_per_second": 5866.5,
-      "gpu_memory_allocated_gb": 7.463,
-      "gpu_memory_reserved_gb": 8.582,
-      "gpu_utilization_pct": 95.0
+      "loss": 10.554840087890625,
+      "step_time_s": 4.462967572035268,
+      "tokens_per_second": 7342.199886309426,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 21,
-      "loss": 2.3413,
-      "step_time_s": 1.4044,
-      "tokens_per_second": 5833.1,
-      "gpu_memory_allocated_gb": 7.402,
-      "gpu_memory_reserved_gb": 8.512,
-      "gpu_utilization_pct": 91.0
+      "loss": 10.54475212097168,
+      "step_time_s": 4.461288599006366,
+      "tokens_per_second": 7344.9630690330605,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 22,
-      "loss": 2.2175,
-      "step_time_s": 1.379,
-      "tokens_per_second": 5940.6,
-      "gpu_memory_allocated_gb": 7.486,
-      "gpu_memory_reserved_gb": 8.609,
-      "gpu_utilization_pct": 89.5
+      "loss": 10.514673233032227,
+      "step_time_s": 4.461882709001657,
+      "tokens_per_second": 7343.985070224273,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 23,
-      "loss": 2.2011,
-      "step_time_s": 1.3681,
-      "tokens_per_second": 5987.7,
-      "gpu_memory_allocated_gb": 7.658,
-      "gpu_memory_reserved_gb": 8.807,
-      "gpu_utilization_pct": 93.5
+      "loss": 10.53763198852539,
+      "step_time_s": 4.463163273001555,
+      "tokens_per_second": 7341.877945227611,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 24,
-      "loss": 2.1822,
-      "step_time_s": 1.3909,
-      "tokens_per_second": 5889.7,
-      "gpu_memory_allocated_gb": 7.692,
-      "gpu_memory_reserved_gb": 8.846,
-      "gpu_utilization_pct": 90.2
+      "loss": 10.532713890075684,
+      "step_time_s": 4.460869198024739,
+      "tokens_per_second": 7345.653626093674,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 25,
-      "loss": 2.1602,
-      "step_time_s": 1.4098,
-      "tokens_per_second": 5810.6,
-      "gpu_memory_allocated_gb": 7.814,
-      "gpu_memory_reserved_gb": 8.986,
-      "gpu_utilization_pct": 88.8
+      "loss": 10.507762908935547,
+      "step_time_s": 4.462062300997786,
+      "tokens_per_second": 7343.689484719334,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 26,
-      "loss": 2.0386,
-      "step_time_s": 1.3929,
-      "tokens_per_second": 5881.1,
-      "gpu_memory_allocated_gb": 7.853,
-      "gpu_memory_reserved_gb": 9.031,
-      "gpu_utilization_pct": 93.6
+      "loss": 10.519158363342285,
+      "step_time_s": 4.465538045973517,
+      "tokens_per_second": 7337.973534800857,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 27,
-      "loss": 2.0402,
-      "step_time_s": 1.426,
-      "tokens_per_second": 5744.9,
-      "gpu_memory_allocated_gb": 7.859,
-      "gpu_memory_reserved_gb": 9.038,
-      "gpu_utilization_pct": 93.7
+      "loss": 10.536069869995117,
+      "step_time_s": 4.463745140994433,
+      "tokens_per_second": 7340.920900492975,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 28,
-      "loss": 2.0013,
-      "step_time_s": 1.4183,
-      "tokens_per_second": 5776.0,
-      "gpu_memory_allocated_gb": 7.844,
-      "gpu_memory_reserved_gb": 9.021,
-      "gpu_utilization_pct": 89.2
+      "loss": 10.512085914611816,
+      "step_time_s": 4.463983564986847,
+      "tokens_per_second": 7340.5288175823625,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 29,
-      "loss": 1.9187,
-      "step_time_s": 1.4135,
-      "tokens_per_second": 5795.7,
-      "gpu_memory_allocated_gb": 7.98,
-      "gpu_memory_reserved_gb": 9.177,
-      "gpu_utilization_pct": 93.1
+      "loss": 10.497753143310547,
+      "step_time_s": 4.463167429028545,
+      "tokens_per_second": 7341.871108593455,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 30,
-      "loss": 1.9222,
-      "step_time_s": 1.3632,
-      "tokens_per_second": 6009.3,
-      "gpu_memory_allocated_gb": 7.993,
-      "gpu_memory_reserved_gb": 9.192,
-      "gpu_utilization_pct": 92.6
+      "loss": 10.501666069030762,
+      "step_time_s": 4.6024498990154825,
+      "tokens_per_second": 7119.686410276721,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 31,
-      "loss": 1.9135,
-      "step_time_s": 1.4263,
-      "tokens_per_second": 5743.4,
-      "gpu_memory_allocated_gb": 8.05,
-      "gpu_memory_reserved_gb": 9.258,
-      "gpu_utilization_pct": 95.2
+      "loss": 10.51089859008789,
+      "step_time_s": 4.464569354022387,
+      "tokens_per_second": 7339.5656784853,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 32,
-      "loss": 1.8701,
-      "step_time_s": 1.3972,
-      "tokens_per_second": 5863.2,
-      "gpu_memory_allocated_gb": 8.22,
-      "gpu_memory_reserved_gb": 9.453,
-      "gpu_utilization_pct": 93.8
+      "loss": 10.492020606994629,
+      "step_time_s": 4.468395686999429,
+      "tokens_per_second": 7333.280733247692,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 33,
-      "loss": 1.7654,
-      "step_time_s": 1.4274,
-      "tokens_per_second": 5739.0,
-      "gpu_memory_allocated_gb": 8.121,
-      "gpu_memory_reserved_gb": 9.339,
-      "gpu_utilization_pct": 97.9
+      "loss": 10.495594024658203,
+      "step_time_s": 4.465024931007065,
+      "tokens_per_second": 7338.816805354172,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 34,
-      "loss": 1.8165,
-      "step_time_s": 1.3532,
-      "tokens_per_second": 6053.8,
-      "gpu_memory_allocated_gb": 8.085,
-      "gpu_memory_reserved_gb": 9.297,
-      "gpu_utilization_pct": 88.3
+      "loss": 10.496296882629395,
+      "step_time_s": 4.4614385809982195,
+      "tokens_per_second": 7344.716150427955,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 35,
-      "loss": 1.7646,
-      "step_time_s": 1.3961,
-      "tokens_per_second": 5867.7,
-      "gpu_memory_allocated_gb": 8.37,
-      "gpu_memory_reserved_gb": 9.626,
-      "gpu_utilization_pct": 97.8
+      "loss": 10.470221519470215,
+      "step_time_s": 4.464306686015334,
+      "tokens_per_second": 7339.997519132683,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 36,
-      "loss": 1.7529,
-      "step_time_s": 1.3764,
-      "tokens_per_second": 5951.6,
-      "gpu_memory_allocated_gb": 8.309,
-      "gpu_memory_reserved_gb": 9.555,
-      "gpu_utilization_pct": 91.8
+      "loss": 10.48936939239502,
+      "step_time_s": 4.4653661149786785,
+      "tokens_per_second": 7338.2560704446205,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 37,
-      "loss": 1.6575,
-      "step_time_s": 1.3584,
-      "tokens_per_second": 6030.8,
-      "gpu_memory_allocated_gb": 8.527,
-      "gpu_memory_reserved_gb": 9.806,
-      "gpu_utilization_pct": 94.8
+      "loss": 10.45573902130127,
+      "step_time_s": 4.465371014026459,
+      "tokens_per_second": 7338.2480194972295,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 38,
-      "loss": 1.6522,
-      "step_time_s": 1.3751,
-      "tokens_per_second": 5957.3,
-      "gpu_memory_allocated_gb": 8.458,
-      "gpu_memory_reserved_gb": 9.727,
-      "gpu_utilization_pct": 91.5
+      "loss": 10.46532917022705,
+      "step_time_s": 4.464047088986263,
+      "tokens_per_second": 7340.4243608553115,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 39,
-      "loss": 1.6073,
-      "step_time_s": 1.4158,
-      "tokens_per_second": 5786.2,
-      "gpu_memory_allocated_gb": 8.512,
-      "gpu_memory_reserved_gb": 9.789,
-      "gpu_utilization_pct": 95.3
+      "loss": 10.475991249084473,
+      "step_time_s": 4.462251712975558,
+      "tokens_per_second": 7343.377762557763,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 40,
-      "loss": 1.5249,
-      "step_time_s": 1.412,
-      "tokens_per_second": 5801.8,
-      "gpu_memory_allocated_gb": 8.384,
-      "gpu_memory_reserved_gb": 9.642,
-      "gpu_utilization_pct": 91.0
+      "loss": 10.475137710571289,
+      "step_time_s": 4.608901915024035,
+      "tokens_per_second": 7109.719539307905,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 41,
-      "loss": 1.5447,
-      "step_time_s": 1.3742,
-      "tokens_per_second": 5961.4,
-      "gpu_memory_allocated_gb": 8.624,
-      "gpu_memory_reserved_gb": 9.917,
-      "gpu_utilization_pct": 96.2
+      "loss": 10.475245475769043,
+      "step_time_s": 4.462888963986188,
+      "tokens_per_second": 7342.329209717128,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 42,
-      "loss": 1.4886,
-      "step_time_s": 1.4098,
-      "tokens_per_second": 5810.6,
-      "gpu_memory_allocated_gb": 8.61,
-      "gpu_memory_reserved_gb": 9.901,
-      "gpu_utilization_pct": 97.4
+      "loss": 10.46960735321045,
+      "step_time_s": 4.466559673950542,
+      "tokens_per_second": 7336.295133614024,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 43,
-      "loss": 1.512,
-      "step_time_s": 1.37,
-      "tokens_per_second": 5979.7,
-      "gpu_memory_allocated_gb": 8.583,
-      "gpu_memory_reserved_gb": 9.87,
-      "gpu_utilization_pct": 92.2
+      "loss": 10.48404598236084,
+      "step_time_s": 4.467556411982514,
+      "tokens_per_second": 7334.6583631518015,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 44,
-      "loss": 1.4033,
-      "step_time_s": 1.3667,
-      "tokens_per_second": 5994.2,
-      "gpu_memory_allocated_gb": 8.907,
-      "gpu_memory_reserved_gb": 10.243,
-      "gpu_utilization_pct": 90.1
+      "loss": 10.466840744018555,
+      "step_time_s": 4.465154754987452,
+      "tokens_per_second": 7338.603429903312,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 45,
-      "loss": 1.4328,
-      "step_time_s": 1.4225,
-      "tokens_per_second": 5758.7,
-      "gpu_memory_allocated_gb": 8.662,
-      "gpu_memory_reserved_gb": 9.962,
-      "gpu_utilization_pct": 95.0
+      "loss": 10.476231575012207,
+      "step_time_s": 4.4636903870268725,
+      "tokens_per_second": 7341.010948079166,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 46,
-      "loss": 1.385,
-      "step_time_s": 1.4271,
-      "tokens_per_second": 5740.2,
-      "gpu_memory_allocated_gb": 8.967,
-      "gpu_memory_reserved_gb": 10.312,
-      "gpu_utilization_pct": 90.3
+      "loss": 10.470928192138672,
+      "step_time_s": 4.467016889015213,
+      "tokens_per_second": 7335.544237716986,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 47,
-      "loss": 1.3228,
-      "step_time_s": 1.4124,
-      "tokens_per_second": 5799.9,
-      "gpu_memory_allocated_gb": 9.066,
-      "gpu_memory_reserved_gb": 10.426,
-      "gpu_utilization_pct": 93.0
+      "loss": 10.46964168548584,
+      "step_time_s": 4.4659386280109175,
+      "tokens_per_second": 7337.315339372347,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 48,
-      "loss": 1.3633,
-      "step_time_s": 1.4063,
-      "tokens_per_second": 5825.4,
-      "gpu_memory_allocated_gb": 9.104,
-      "gpu_memory_reserved_gb": 10.47,
-      "gpu_utilization_pct": 91.2
+      "loss": 10.463369369506836,
+      "step_time_s": 4.4637010539881885,
+      "tokens_per_second": 7340.993405175002,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     },
     {
       "step": 49,
-      "loss": 1.2957,
-      "step_time_s": 1.3804,
-      "tokens_per_second": 5934.7,
-      "gpu_memory_allocated_gb": 9.108,
-      "gpu_memory_reserved_gb": 10.474,
-      "gpu_utilization_pct": 91.0
+      "loss": 10.462949752807617,
+      "step_time_s": 4.4646364920190535,
+      "tokens_per_second": 7339.455308080692,
+      "gpu_memory_allocated_gb": 11.459167232,
+      "gpu_memory_reserved_gb": 16.542334976,
+      "gpu_utilization_pct": 100.0
     }
   ],
-  "mean_throughput_tps": 5651.3,
-  "peak_gpu_memory_gb": 9.108,
-  "mean_step_time_s": 1.5687,
-  "total_time_s": 78.44,
-  "tokens_trained": 409600
+  "mean_throughput_tps": 7312.849420878205,
+  "peak_gpu_memory_gb": 11.45916928,
+  "mean_step_time_s": 4.481525941480649,
+  "total_time_s": 224.07629707403248,
+  "tokens_trained": 1638400
 }

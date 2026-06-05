@@ -1,63 +1,15 @@
 [
   {
-    "run_id": "single_gpu_fp32",
-    "num_gpus": 1,
-    "fsdp": false,
-    "sharding": "none",
-    "grad_ckpt": false,
-    "dtype": "fp32",
-    "mean_throughput_tps": 2685.9,
-    "peak_gpu_memory_gb": 14.267,
-    "mean_step_time_ms": 3301.4,
-    "total_time_s": 165.07
-  },
-  {
-    "run_id": "single_gpu_bf16",
-    "num_gpus": 1,
-    "fsdp": false,
-    "sharding": "none",
-    "grad_ckpt": false,
-    "dtype": "bf16",
-    "mean_throughput_tps": 5194.8,
-    "peak_gpu_memory_gb": 8.077,
-    "mean_step_time_ms": 1705.5,
-    "total_time_s": 85.27
-  },
-  {
-    "run_id": "fsdp_full_shard",
-    "num_gpus": 4,
-    "fsdp": true,
-    "sharding": "FULL_SHARD",
-    "grad_ckpt": false,
-    "dtype": "bf16",
-    "mean_throughput_tps": 17472.9,
-    "peak_gpu_memory_gb": 7.298,
-    "mean_step_time_ms": 507.7,
-    "total_time_s": 25.38
-  },
-  {
-    "run_id": "fsdp_shard_grad",
-    "num_gpus": 4,
-    "fsdp": true,
-    "sharding": "SHARD_GRAD_OP",
-    "grad_ckpt": false,
-    "dtype": "bf16",
-    "mean_throughput_tps": 14320.2,
-    "peak_gpu_memory_gb": 10.922,
-    "mean_step_time_ms": 621.3,
-    "total_time_s": 31.06
-  },
-  {
     "run_id": "bf16_no_gc_full_shard",
     "num_gpus": 4,
     "fsdp": true,
     "sharding": "FULL_SHARD",
     "grad_ckpt": false,
     "dtype": "bf16",
-    "mean_throughput_tps": 17478.1,
-    "peak_gpu_memory_gb": 7.24,
-    "mean_step_time_ms": 508.5,
-    "total_time_s": 25.42
+    "mean_throughput_tps": 59732.92170920251,
+    "peak_gpu_memory_gb": 2.486458368,
+    "mean_step_time_ms": 568.7845149205532,
+    "total_time_s": 28.43922574602766
   },
   {
     "run_id": "bf16_gc_full_shard",
@@ -66,10 +18,10 @@
     "sharding": "FULL_SHARD",
     "grad_ckpt": true,
     "dtype": "bf16",
-    "mean_throughput_tps": 11886.4,
-    "peak_gpu_memory_gb": 4.935,
-    "mean_step_time_ms": 748.0,
-    "total_time_s": 37.4
+    "mean_throughput_tps": 46342.61139757466,
+    "peak_gpu_memory_gb": 3.549789184,
+    "mean_step_time_ms": 710.0041208171751,
+    "total_time_s": 35.50020604085876
   },
   {
     "run_id": "bf16_no_gc_shard_grad",
@@ -78,10 +30,10 @@
     "sharding": "SHARD_GRAD_OP",
     "grad_ckpt": false,
     "dtype": "bf16",
-    "mean_throughput_tps": 14308.2,
-    "peak_gpu_memory_gb": 10.747,
-    "mean_step_time_ms": 619.6,
-    "total_time_s": 30.98
+    "mean_throughput_tps": 60704.911792123254,
+    "peak_gpu_memory_gb": 4.77185024,
+    "mean_step_time_ms": 540.9673361841124,
+    "total_time_s": 27.048366809205618
   },
   {
     "run_id": "bf16_gc_shard_grad",
@@ -90,10 +42,10 @@
     "sharding": "SHARD_GRAD_OP",
     "grad_ckpt": true,
     "dtype": "bf16",
-    "mean_throughput_tps": 9687.9,
-    "peak_gpu_memory_gb": 6.196,
-    "mean_step_time_ms": 917.6,
-    "total_time_s": 45.88
+    "mean_throughput_tps": 47723.83570044537,
+    "peak_gpu_memory_gb": 5.835181056,
+    "mean_step_time_ms": 689.086899937829,
+    "total_time_s": 34.45434499689145
   },
   {
     "run_id": "fp32_no_gc_full_shard",
@@ -102,10 +54,10 @@
     "sharding": "FULL_SHARD",
     "grad_ckpt": false,
     "dtype": "fp32",
-    "mean_throughput_tps": 8253.7,
-    "peak_gpu_memory_gb": 14.675,
-    "mean_step_time_ms": 1073.2,
-    "total_time_s": 53.66
+    "mean_throughput_tps": 9178.7302936979,
+    "peak_gpu_memory_gb": 9.350829056,
+    "mean_step_time_ms": 3570.369490716839,
+    "total_time_s": 178.51847453584196
   },
   {
     "run_id": "fp32_gc_full_shard",
@@ -114,9 +66,10 @@
     "sharding": "FULL_SHARD",
     "grad_ckpt": true,
     "dtype": "fp32",
-    "mean_throughput_tps": 5651.3,
-    "peak_gpu_memory_gb": 9.108,
-    "mean_step_time_ms": 1568.7,
-    "total_time_s": 78.44
+    "mean_throughput_tps": 7312.849420878205,
+    "peak_gpu_memory_gb": 11.45916928,
+    "mean_step_time_ms": 4481.52594148065,
+    "total_time_s": 224.07629707403248
   }
+] }
 ]
