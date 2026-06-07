@@ -61,6 +61,28 @@ Features:
 - **Training dynamics** — per-step curves for throughput, loss, and GPU memory (all runs, individually toggleable)
 - **All runs table** — sorted by throughput, with inline bar charts
 
+## Results
+
+> Ran on a Vast.ai 4× A100 instance. TinyLlama-1.1B, batch size 4, sequence length 512, 50 steps per configuration.
+
+**BF16 is not optional on A100s.** The single biggest lever by far — BF16 is 7.1× faster than FP32 (67k vs 9.4k tok/s) and cuts memory in half. A100s have native BF16 tensor core support so this is basically free performance. There's no practical reason to run FP32 fine-tuning on this hardware.
+
+**FSDP is worth it, and the communication overhead is smaller than you'd expect.** The best FSDP run (BF16, SHARD_GRAD_OP, no gradient checkpointing) comes in at 60,960 tok/s — only 9% slower than running on a single GPU — while dropping per-GPU memory from 9.00 GB to 3.63 GB. Once your model starts pushing the memory limits of a single card, that's a very cheap tax to pay.
+
+**FULL_SHARD vs SHARD_GRAD_OP is mostly a memory decision.** SHARD_GRAD_OP keeps full parameter replicas on each GPU and only shards gradients and optimizer states, so it's a touch faster (60,705 vs 59,733 tok/s, about 1.6%). But it uses 2.3 GB more memory per GPU (4.77 vs 2.49 GB). The throughput gap is small enough that FULL_SHARD is the safer default — that headroom matters once you scale up model size or batch size.
+
+**Gradient checkpointing didn't save memory here, and that's not a bug.** GC cost around 21–22% throughput across every configuration, which is consistent and expected. The surprising part: it actually *increased* peak allocated memory slightly (+1.06 GB for BF16, +2.11 GB for FP32). At batch size 4, TinyLlama-1.1B isn't close to its memory ceiling, so the recomputed activations during the backward pass briefly spike the peak before they're freed — higher than the steady-state footprint without GC. This will flip at larger batch sizes or with bigger models where activation memory starts to dominate.
+
+| Configuration | Throughput | Peak mem/GPU |
+|---|---|---|
+| Single GPU · BF16 | 67,086 tok/s | 9.00 GB |
+| FSDP · SHARD_GRAD_OP · BF16 · no GC | 60,960 tok/s | 3.63 GB |
+| FSDP · FULL_SHARD · BF16 · no GC | 59,733 tok/s | 2.49 GB |
+| FSDP · FULL_SHARD · BF16 · GC | 46,343 tok/s | 3.55 GB |
+| Single GPU · FP32 | 9,396 tok/s | 17.97 GB |
+
+For a model this size the sweet spot is **FSDP FULL_SHARD + BF16 + no gradient checkpointing** — under 2.5 GB per GPU with only an 11% throughput hit, leaving plenty of headroom to push batch size or swap in a larger model.
+
 ## Programmatic API
 
 ```python
